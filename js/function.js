@@ -13,7 +13,7 @@ function checkStringLength(str, value){
 // Вроде все работает
 console.log(checkStringLength('lol', 5));
 console.log(checkStringLength('lalal', 5));
-
+// ---------------------------------------------------------------------------------------------------------------
 //2-я функция, которая проверят строку на палиндромность
 //Создать функцию, назвать ее checkOnPalindrom, задать параметр
 function checkOnPalindrom(str){
@@ -44,3 +44,33 @@ console.log(checkOnPalindrom('nilin'));
 
 // console.log(checkOnPalindromSecond('lol'));
 //Я понял, зачем написал другое решение. Потому что метод .reverse() писал, как .reverce() и у меня не рабоатло...
+
+//----------------------------------------------------------------------------------------------------------------
+
+//3-я функция, которая достает из строки числа и возвращает их.
+
+const getNumber = function(str) {
+  let newStr = '';
+  for(let i = 0; i < str.length; i++){
+    if(!Number.isNaN(parseInt(str.at(i), 10))){
+      newStr += str.at(i);
+    }
+  }
+  return parseInt(newStr);
+}
+
+console.log(getNumber('1 корова, и 0.4 гуся'));
+console.log(getNumber('2 лоха и 1 дурочка'));
+
+//----------------------------------------------------------------------------------------------------------------
+
+//4-я функция, которая выводит строку в зависимости от переданного параметра минимальной длинны
+// Создаем функцию с тремя параметрами
+const getNewStr = function(str, minLength, strTwo){
+  //создать константу, которая вычислит остаток
+  const result = minLength - str.length;
+  return result <= 0 ? str : strTwo.slice(0, result % strTwo.length) + strTwo.repeat(result / strTwo) + str;
+}
+
+console.log(getNewStr('er', 3, 'weqwg'));
+//Функцию переписал с лайва. Чтобы сдать домашку, ибо просрочил. Разберу ее.
