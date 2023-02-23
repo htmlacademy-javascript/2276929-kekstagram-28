@@ -11,8 +11,8 @@ function checkStringLength(str, value){
 
 }
 // Вроде все работает
-console.log(checkStringLength('lol', 5));
-console.log(checkStringLength('lalal', 5));
+checkStringLength('lol', 5);
+checkStringLength('lalal', 5);
 // ---------------------------------------------------------------------------------------------------------------
 //2-я функция, которая проверят строку на палиндромность
 //Создать функцию, назвать ее checkOnPalindrom, задать параметр
@@ -29,8 +29,8 @@ function checkOnPalindrom(str){
   }
 }
 //Выдает undefined, если false...
-console.log(checkOnPalindrom('come'));
-console.log(checkOnPalindrom('nilin'));
+checkOnPalindrom('come');
+checkOnPalindrom('nilin');
 //Решение выше подсмотрено на канале Сергея Пузанкова. Обдумано, понято, но решение не очевидно для меня после создания переменной
 
 //Изначальное решение было такое:
@@ -59,8 +59,8 @@ const getNumber = function(str) {
   return parseInt(newStr);
 }
 
-console.log(getNumber('1 корова, и 0.4 гуся'));
-console.log(getNumber('2 лоха и 1 дурочка'));
+getNumber('1 корова, и 0.4 гуся');
+getNumber('2 лоха и 1 дурочка');
 
 //----------------------------------------------------------------------------------------------------------------
 
@@ -72,5 +72,5 @@ const getNewStr = function(str, minLength, strTwo){
   return result <= 0 ? str : strTwo.slice(0, result % strTwo.length) + strTwo.repeat(result / strTwo) + str;
 }
 
-console.log(getNewStr('er', 3, 'weqwg'));
+getNewStr('er', 3, 'weqwg');
 //Функцию переписал с лайва. Чтобы сдать домашку, ибо просрочил. Разберу ее.
