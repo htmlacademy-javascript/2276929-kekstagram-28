@@ -3,16 +3,16 @@
 // Она будет принимать два параметра: строку и число
 function checkStringLength(str, value){
   //делаю проверку, что ЕСЛИ длина строки(первый параметр) не равна числу(второму параметру, ТОГДА вернуть false)
-  if(str.length !== value){
-    return false;
+  if(str.length <= value){
+    return true;
   }
   // ИНАЧЕ вернуть true
-  return true;
+  return false;
 
 }
 // Вроде все работает
-checkStringLength('lol', 5);
-checkStringLength('lalal', 5);
+console.log(checkStringLength('lol', 3));
+console.log(checkStringLength('la  lal', 7));
 // ---------------------------------------------------------------------------------------------------------------
 //2-я функция, которая проверят строку на палиндромность
 //Создать функцию, назвать ее checkOnPalindrom, задать параметр
