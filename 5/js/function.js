@@ -3,48 +3,29 @@
 // Она будет принимать два параметра: строку и число
 function checkStringLength(str, value){
   //делаю проверку, что ЕСЛИ длина строки(первый параметр) не равна числу(второму параметру, ТОГДА вернуть false)
-  if(str.length !== value){
-    return false;
+  if(str.length <= value){
+    return true;
   }
   // ИНАЧЕ вернуть true
-  return true;
+  return false;
 
 }
 // Вроде все работает
-checkStringLength('lol', 5);
-checkStringLength('lalal', 5);
+checkStringLength('lol', 3);
+checkStringLength('la lal', 7);
 // ---------------------------------------------------------------------------------------------------------------
 //2-я функция, которая проверят строку на палиндромность
-//Создать функцию, назвать ее checkOnPalindrom, задать параметр
-function checkOnPalindrom(str){
-  //Созадть переменную, которая будет содержать деленную пополам строку
-  const cutStr = Math.floor(str.length % 2);
-  //Создать цикл, который ставит i в начало половины строки и перебирает ее элементы
-  for(let i = 0; i < cutStr; i++){
-  //ЕСЛИ строчный элемент НЕ равен строчному элементу с конца строки, тогда false
-    if(str[i] !== str[str.length - i - 1]){
-      return false;
-    }
-    return true;
+function checkOnPalindromSecond(str){
+  const reverceStr = str.toLowerCase().split('').reverse().join('');
+  if(str !== reverceStr){
+    return false;
   }
+  return true;
 }
-//Выдает undefined, если false...
-checkOnPalindrom('come');
-checkOnPalindrom('nilin');
-//Решение выше подсмотрено на канале Сергея Пузанкова. Обдумано, понято, но решение не очевидно для меня после создания переменной
 
-//Изначальное решение было такое:
-// function checkOnPalindromSecond(str){
-//   const reverceStr = str.split('').reverse().join('');
-//   if(str !== reverceStr){
-//     return false;
-//   }
-//   return true;
-// }
+checkOnPalindromSecond('lol');
 
-// console.log(checkOnPalindromSecond('lol'));
-//Я понял, зачем написал другое решение. Потому что метод .reverse() писал, как .reverce() и у меня не рабоатло...
-
+//Убрал другое решение из VS, ибо это действует. Исправил: теперь привожу строку к одному регистру
 //----------------------------------------------------------------------------------------------------------------
 
 //3-я функция, которая достает из строки числа и возвращает их.
@@ -74,3 +55,20 @@ const getNewStr = function(str, minLength, strTwo){
 
 getNewStr('er', 3, 'weqwg');
 //Функцию переписал с лайва. Чтобы сдать домашку, ибо просрочил. Разберу ее.
+
+
+//Ниже буду писать свой код, но ориентируясь на лайв от Игоря
+const getAnotherString = function(string, minLenght, stringTwo){
+  const result = minLenght - string.length;
+
+  if(result <= 0){
+    return string;
+  }
+
+  return stringTwo.slice(0, result % stringTwo.length) + stringTwo.repeat(result / stringTwo) + string;
+}
+
+console.log(getAnotherString('er', 3, 'weqwg'));
+console.log(getAnotherString('1', 2, '0'));
+console.log(getAnotherString('1', 4, '0'));
+//нет, я сделал так же, как и в лайве было
