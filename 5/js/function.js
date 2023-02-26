@@ -16,16 +16,22 @@ checkStringLength('la lal', 7);
 // ---------------------------------------------------------------------------------------------------------------
 //2-я функция, которая проверят строку на палиндромность
 function checkOnPalindromSecond(str){
-  const reverceStr = str.toLowerCase().split('').reverse().join('');
+  str = str.toLowerCase();
+  const reverceStr = str.split('').reverse().join('');
   if(str !== reverceStr){
     return false;
   }
   return true;
 }
 
-checkOnPalindromSecond('lol');
+console.log(checkOnPalindromSecond('lol'));
+console.log(checkOnPalindromSecond('ДовОд'));
+console.log(checkOnPalindromSecond('слим'));
+console.log(checkOnPalindromSecond('довод'));
+console.log(checkOnPalindromSecond('ДоВоД'));
 
 //Убрал другое решение из VS, ибо это действует. Исправил: теперь привожу строку к одному регистру
+//Попытка № 3. Исправил, сейчас сразу на первой строке функции строку изначально принижаю в регистре=) Вроде работает как надо...
 //----------------------------------------------------------------------------------------------------------------
 
 //3-я функция, которая достает из строки числа и возвращает их.
@@ -47,28 +53,79 @@ getNumber('2 лоха и 1 дурочка');
 
 //4-я функция, которая выводит строку в зависимости от переданного параметра минимальной длинны
 // Создаем функцию с тремя параметрами
-const getNewStr = function(str, minLength, strTwo){
-  //создать константу, которая вычислит остаток
-  const result = minLength - str.length;
-  return result <= 0 ? str : strTwo.slice(0, result % strTwo.length) + strTwo.repeat(result / strTwo) + str;
-}
+// const getNewStr = function(str, minLength, strTwo){
+//   //создать константу, которая вычислит остаток
+//   const result = minLength - str.length;
+//   return result <= 0 ? str : strTwo.slice(0, result % strTwo.length) + strTwo.repeat(result / strTwo) + str;
+// }
 
-getNewStr('er', 3, 'weqwg');
-//Функцию переписал с лайва. Чтобы сдать домашку, ибо просрочил. Разберу ее.
+// getNewStr('er', 3, 'weqwg');
+// //Функцию переписал с лайва. Чтобы сдать домашку, ибо просрочил. Разберу ее.
 
 
 //Ниже буду писать свой код, но ориентируясь на лайв от Игоря
-const getAnotherString = function(string, minLenght, stringTwo){
-  const result = minLenght - string.length;
+// const getAnotherString = function(string, minLenght, stringTwo){
+//   const result = minLenght - string.length;
 
-  if(result <= 0){
-    return string;
+//   if(result <= 0){
+//     return string;
+//   }
+
+//   return stringTwo.slice(0, result % stringTwo.length) + stringTwo.repeat(result / stringTwo) + string;
+// }
+
+// console.log(getAnotherString('er', 3, 'weqwg'));
+// console.log(getAnotherString('1', 2, '0'));
+// console.log(getAnotherString('1', 4, '0'));
+// //нет, я сделал так же, как и в лайве было
+
+
+//Функция 4. Попытка исправить № 3
+const getResultString = function(str, minLength, dopStr){
+  //Создам переменную, куда запишем новую строку
+  let newString = '';
+  let arrFromDopStr = dopStr.split('');
+  console.log(arrFromDopStr);
+
+  for(let i = 0; i <= str.length; i++){
+    if(str.length == minLength){
+      console.log(str);
+      break;
+    } else if(str.length < minLength){
+      for(let j = 0; j < arrFromDopStr.length; j++){
+        newString = arrFromDopStr[j] + str;
+        console.log(newString);
+      }
+    }else{
+      return false;
+    }
   }
-
-  return stringTwo.slice(0, result % stringTwo.length) + stringTwo.repeat(result / stringTwo) + string;
 }
 
-console.log(getAnotherString('er', 3, 'weqwg'));
-console.log(getAnotherString('1', 2, '0'));
-console.log(getAnotherString('1', 4, '0'));
-//нет, я сделал так же, как и в лайве было
+console.log(getResultString('asdfп', 8, 'gwera'));
+console.log(getResultString('3', 1, 'wer'));
+// Пытался... запутался.
+
+const getDopString = function (string, minLength, symbols) {
+  let resultStr = '';
+  const extraLength = minLength - string.length;
+  const extraSymbolsTotal = symbols.split('');
+  if (string.length >= minLength) {
+    return string;
+  } else if (string.length < minLength && extraSymbolsTotal.length === extraLength) {
+    resultStr = extraSymbolsTotal.join('') + string;
+    return resultStr;
+  } else if (string.length < minLength && extraSymbolsTotal.length > extraLength) {
+    for (let i = 0; i <= extraLength - 1; i++) {
+      resultStr = resultStr + extraSymbolsTotal[i];
+    }
+    resultStr = resultStr + string;
+    return resultStr;
+  } else if (string.length < minLength && extraSymbolsTotal.length < extraLength) {
+    resultStr = string.padStart(6, extraSymbolsTotal.join(''));
+    return resultStr;
+  }
+};
+
+console.log(getDopString('h', 6, 'fkjjjjj'));
+console.log(getDopString('h', 3, 'asdg'));
