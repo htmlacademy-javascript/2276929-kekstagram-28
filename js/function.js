@@ -106,31 +106,31 @@ getNumber('2 лоха и 1 дурочка');
 // console.log(getResultString('3', 1, 'wer'));
 // // Пытался... запутался.
 
-// const getDopString = function (string, minLength, symbols) {
-//   let resultStr = '';
-//   const extraLength = minLength - string.length;
-//   const extraSymbolsTotal = symbols.split('');
-//   if (string.length >= minLength) {
-//     return string;
-//   } else if (string.length < minLength && extraSymbolsTotal.length === extraLength) {
-//     resultStr = extraSymbolsTotal.join('') + string;
-//     return resultStr;
-//   } else if (string.length < minLength && extraSymbolsTotal.length > extraLength) {
-//     for (let i = 0; i <= extraLength - 1; i++) {
-//       resultStr = resultStr + extraSymbolsTotal[i];
-//     }
-//     resultStr = resultStr + string;
-//     return resultStr;
-//   } else if (string.length < minLength && extraSymbolsTotal.length < extraLength) {
-//     resultStr = string.padStart(6, extraSymbolsTotal.join(''));
-//     return resultStr;
-//   }
-// };
+const getDopString = function (string, minLength, symbols) {
+  let resultStr = '';
+  const extraLength = minLength - string.length;
+  const extraSymbolsTotal = symbols.split('');
+  if (string.length >= minLength) {
+    return string;
+  } else if (string.length < minLength && extraSymbolsTotal.length === extraLength) {
+    resultStr = extraSymbolsTotal.join('') + string;
+    return resultStr;
+  } else if (string.length < minLength && extraSymbolsTotal.length > extraLength) {
+    for (let i = 0; i <= extraLength - 1; i++) {
+      resultStr = resultStr + extraSymbolsTotal[i];
+    }
+    resultStr = resultStr + string;
+    return resultStr;
+  } else if (string.length < minLength && extraSymbolsTotal.length < extraLength) {
+    resultStr = string.padStart(4, extraSymbolsTotal.join(''));
+    return resultStr;
+  }
+};
 
-// // console.log(getDopString('h', 6, 'fkjjjjj'));
-// // console.log(getDopString('h', 3, 'asdg'));
-// console.log(getDopString('1', 4, '0'));
-// console.log(getDopString('q', 4, 'we'));
+console.log(getDopString('h', 4, 'fkjjjjj'));
+console.log(getDopString('h', 4, 'asdg'));
+console.log(getDopString('1', 4, '0'));
+console.log(getDopString('q', 4, 'we'));
 // function noPad (string, targetLength, extraString) {
 //   let extraLenght = targetLength - string.length;
 //   if (string.length > targetLength) {
@@ -143,6 +143,8 @@ getNumber('2 лоха и 1 дурочка');
 
 // console.log(noPad('q', 4, 'wwe'));
 // console.log(noPad('qwerty', 4, '0'));
+
+//
 const myPadStart = (string, minLength, pad) => {
   const actualPad = minLength - string.length;
 
@@ -155,4 +157,4 @@ const myPadStart = (string, minLength, pad) => {
 myPadStart('q', 4, 'we');
 myPadStart('1', 4, '0');
 myPadStart('q', 4, 'we');
-console.log(myPadStart('1', 2, '0'));
+myPadStart('1', 2, '0');
