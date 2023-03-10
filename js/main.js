@@ -49,18 +49,41 @@ const getRandomNumber = function (a, b){
   return Math.floor(result);
 };
 
-let myRandomNum = getRandomNumber();
+console.log(getRandomNumber(0, 15));
 
-// console.log(myRandomNum);
+//Здесь я создам массив с описанием фото
+const arrForDescription = [
+  'Далеко-далеко за словесными горами',
+  'в стране гласных и согласных живут рыбные тексты',
+  'Рукопись его единственное повстречался',
+  'бросил имени предупреждал путь ручеек ему власти домах гор лучше!',
+  'Безопасную лучше моей океана не своих.',
+  'Родного там океана парадигматическая',
+  'маленький домах текстами инициал знаках запятой',
+  'сбить переписывается заманивший выйти сих,',
+  'встретил переулка злых на берегу.',
+  'Предложения!'
+]
 
-let createMyObject = function(myRandomNum) {
-  const randomId = myRandomNum(0, 25);
-  const randomLikes = myRandomNum(15, 250);
+//Функция, которая будет перебирать массив и выводить случайный элемент.
+const getRandomDescription = function(arr){
+  let randomFrase = Math.floor(Math.random() * arr.length);
+
+  return arr[randomFrase];
+}
+
+console.log(getRandomDescription(arrForDescription));
+
+//Функция с переменными и объектом.
+const createMyObject = function() {
+  const randomId = getRandomNumber(0, 25);
+  const randomLikes = getRandomNumber(15, 250);
+  const randomDescription = getRandomDescription(arrForDescription);
 
   let objectDone = [{
     id: randomId,
     url: '',
-    description: '',
+    description: randomDescription,
     likes: randomLikes,
     comments: '',
   }];
