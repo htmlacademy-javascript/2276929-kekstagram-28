@@ -173,14 +173,14 @@ const getRandomNumber = function (a, b){
   return Math.floor(result);
 };
 
-let allPhotos = [];
+const allPhotos = [];
 
 const createComment = (index) => {
   let comments = [];
   for(let i = 0; i <= 25; i++){
-    let getRandomAva = getRandomNumber(0, 6);
-    let getRandomComment = getRandomNumber(0, ALLCOMMENTS.length - 1);
-    let getRandomName = getRandomNumber(0, USERNAME.length - 1);
+    const getRandomAva = getRandomNumber(0, 6);
+    const getRandomComment = getRandomNumber(0, ALLCOMMENTS.length - 1);
+    const getRandomName = getRandomNumber(0, USERNAME.length - 1);
     comments.push({
       commentId: +(String(index) + String(i)),
       avatar: `img/avatar-${getRandomAva}.svg`,
@@ -199,7 +199,7 @@ const createUsers = () => {
   let getRandomLikes = getRandomNumber(15, 250);
 
   for(let i = 1; i <= 25; i++){
-    let photo = {
+    const photo = {
       id: i,
       url: `photos/${i}.jpg`,
       description: getRandomNumber(0, DESCRIPTION.length - 1),
